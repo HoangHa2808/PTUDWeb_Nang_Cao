@@ -1,0 +1,115 @@
+I. Admin:
+	- TK người dùng:
+		+ Quản lý role (admin, user)
+		+ Quản lý người dùng: admin, user
+			Hiển thị danh sách, thêm, xoá, sửa
+		+ Đăng ký tk
+		+ Đăng nhập
+	- Quản lý danh mục bài viết
+	- Quản lý loại bài viết
+	- Quản lý bài viết
+	- Quản lý đặt tour
+		+ Hiển thị danh sách đặt tour -> hiển thị giảm dần theo thời gian
+			(Quản lý trạng thái đặt tour)
+	- Quản lý dịch vụ: thuê xe
+		+ Hiển thị danh sách thuê xe -> hiển thị giảm dần theo thời gian
+			(Quản lý trạng thái dịch vụ)
+	- Quản lý phản hồi
+
+1) Bảng Role
+	- id: int -> khoá chính tự tăng
+	- name: string (varchar) - 20 ký tự
+
+2) Bảng user
+	- id: int -> khoá chính tự tăng
+	- fullName -> string -> 50 ký tự
+	- email -> string -> 150 ký tự
+	- phoneNumber -> string -> 20 ký tự
+	- address -> string -> 200 ký tự
+	- password -> string -> md5 -> 32 ký tự -> chính xác
+	- roleID -> int -> foreign key -> role(id)
+		+ Created_at(PostedDate): datetime -> tạo bản ghi
+		+ Updated_at(ModifiedDate): datetime -> sửa bản ghi đó
+
+3) Bảng Danh mục -> Category
+	- int: int -> khoá tự tăng
+	- name: string -> 100 ký tự
+	- slug: string -> 100kys tự
+	- description: longtext
+	- ShowOnMenu: bool
+
+4) Bảng Loại bài viết -> PostType
+	- int: int -> khoá tự tăng
+	- name: string -> 100 ký tự
+
+5) Bảng bài viết -> Posts
+	- id: int -> khoá tự tăng
+	- categoryID -> int -> foreign key -> category(id)
+	- title: string -> 350 ký tự 
+	- postType -> int -> foreign key -> posttype(id)
+	- If postType is tours:
+		+ Times (Lịch trình) -> string -> 100 ký tự
+		+ Schedule (Khởi hành) -> datetime
+		+ Timetable (Thời gian của tour) -> string
+		+ TimeDown -> datetime
+		+ Price (giá) float
+		+ Discount float
+		+ Place(Chỗ trống): string -> 5 ký tự 
+	- else if postTpye is khachsan: 
+		+ Ratting(hạng sao)
+		+ Discount float
+	- else
+		+ ViewCount: int
+	- thumbnail: string -> 500 ký tự
+	- ShortDescription: longtext
+	- Description: longtext
+	- Published: bool
+	- Created_at(PostedDate): datetime -> tạo bản ghi
+	- Updated_at(ModifiedDate): datetime -> sửa bản ghi đó
+5) Bảng quản lý galery
+	- id: int -> khoá tự tăng
+	- post_id -> int > foreign key -> post (id)
+	- thumbnail: string -> 500 ký tự
+6) Bảng quản lý phản hồi -> feedback
+	- id: int -> khoá tự tăng
+	- firstname -> string -> 30 ký tự
+	- lastname -> string -> 30 ký tự
+	- email -> string -> 150 ký tự
+	- phoneNumber -> string -> 20 ký tự
+	- subjectName -> string -> 200 ký tự
+	- notes -> string (varchar) -> độ dài tối đa -> 500 ký tự
+7) Quản lý đặt tour
+	- id: int -> khoá tự tăng
+	- fullName
+	- email
+	- phoneNumber
+	- address
+	- notes
+	- order_date: datetime -> thời điểm đặt tour
+	- danh sách du khách:
+		+ Người lớn x số lượng x giớ thời điểm đặt
+		+ trẻ con x số lượng x giớ thời điểm đặt
+	7.1) Bảng Order
+		- id: int -> khoá tự tăng
+		- fullName
+		- email
+		- phoneNumber
+		- address
+		- notes
+		- order_dateL: datetime -> thời điểm đặt tour
+		- status: int
+		totalMoney -> tổng tiền của đơn hàng
+	7.2) Bảng chi tiết tour
+		- id: int -> khoá tự tăng
+		- orderID -> int ->  int > foreign key -> order (id)
+		- postID -> int  int > foreign key -> post (id)
+		- price -> int
+		- num -> int -> số lượng du khách
+		- totalMoney -> lưu tổng tiền của tour (price * num)
+8) Quản lý đặt xe
+	- id: int -> khoá tự tăng
+	- fullName
+	- email
+	- phoneNumber
+	- location (điểm đi)
+	- destination (điểm đến)

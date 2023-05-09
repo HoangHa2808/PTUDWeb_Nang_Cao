@@ -1,0 +1,8 @@
+.header{
+    margin-top: 10px;
+}
+.Thum{
+    object-fit: cover;
+    width: 100%;
+    height: 600px;
+}

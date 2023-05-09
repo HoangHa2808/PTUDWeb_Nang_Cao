@@ -1,0 +1,14 @@
+Vòng đời của Laravel: -> kiến trúc MVC
+- app: tất cả code trong process
+	+ Consoe: tất cả code chạy trong commendline
+	+ Exceptions: chứa file điều hướng lỗi
+	+ Http: khi gõ lên thanh tìm kiếm sẽ hiện ra
+	+ Middleware: bộ lọc request
+	+ Models: 
+	+ Providers: khai báo Service -> để bắt đầu khởi động: là trung tâm khởi tạo các ứng dụng của Laravel
+- resourcess: 
+- storage: kho lưu trữ
+
+Bắt đầu chạy từ public -> index.php -> bootstrap -> app.php -> Http -> Kernel.php -> Service providers - > Router(Định tuyến) -> Middleware -> Controller/Action -> Views
+
+Phân quyền cho các file Cache

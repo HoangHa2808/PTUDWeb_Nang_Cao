@@ -1,0 +1,89 @@
+﻿@model IPagedList<UserItem>
+@{
+    ViewData["PageTitle"] = "Danh sách người dùng";
+    var userList = Model;
+}
+<!-- Hiển thị Form để tìm bài viết -->
+@*<partial name="_AuthorFilterPane" model="@Model" />*@
+
+
+@if (userList != null && userList.Count > 0)
+{
+    <div class="page-wrapper" style="display:block;">
+        <div class="page-breadcrumb">
+            <h1>
+                Danh sách người dùng
+            </h1>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Users</h4>
+                            <div class="table-responsive">
+                                <table class="table table-responsive table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Họ</th>
+                                            <th>Tên</th>
+                                            <th>Username</th>
+                                            <th>Password</th>
+                                            <th>Chỉnh sửa</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        @foreach (var user in userList)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <a asp-area="Admin"
+                                               asp-controller="Users"
+                                               asp-action="Edit"
+                                               asp-route-id="@user.Id"
+                                                       class="text-bold">
+                                                        @user.FirstName
+                                                        @user.LastName
+                                                    </a>
+
+                                                    <p class="text-bold">
+                                                        @user.Username
+                                                    </p>
+                                                </td>
+                                                <td>
+                                                    @user.Password
+                                                </td>
+                                                <td>
+                                                    @user.Email
+                                                </td>
+                                                <td>
+                                                    @user.Notes
+                                                </td>
+                                                <td>
+                                                    <a asp-area="Admin"
+                                               asp-controller="Users"
+                                               asp-action="Delete"
+                                               asp-route-id="@user.Id"
+                                                       class="btn btn-sm"
+                                                       onclick="return confirm('Bạn có muốn xoá không?')">
+                                                        <i class="fa fa-trash"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <h1 class="text-danger">
+        Không tìm thấy tác giả nào
+    </h1>
+}

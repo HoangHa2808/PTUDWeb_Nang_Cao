@@ -1,0 +1,24 @@
+﻿a
+{
+    text-decoration :none;
+}
+
+.sidebar-nav #sidebarnav .sidebar-item .sidebar-link {
+    color: #fff;
+    font-size: 16px;
+    padding: 12px 40px;
+    display: flex;
+    white-space: nowrap;
+    align-items: center;
+    line-height: 27px;
+    margin-right: 17px;
+}
+
+
+#main-wrapper[data-layout=vertical][data-sidebar-position=fixed] .topbar .top-navbar .navbar-header {
+    position: fixed;
+    z-index: 10;
+}
+#main-wrapper[data-layout=vertical][data-header-position=fixed] .page-wrapper {
+    padding-top: 0;
+}

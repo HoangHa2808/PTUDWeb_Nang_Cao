@@ -1,0 +1,24 @@
+Bộ khung dự án:
+- Frontend
+- Admin
+- CSDL
+
+Frontend:
+
+Admin:
+    - authen/***
+    - user/***
+    - category/**
+    - posts/***
+    - order/***
+    - feedback/***
+    - drivebooking/***
+    index.php -> ...
+
+database:
+    - config.php -> cấu hình CSDL
+    - dbhelper.php -> chứa các function dùng chung cho cả dự án
+
+utils:
+    - utility.php -> chứa các hàm tiện ích cho cả dự án
+

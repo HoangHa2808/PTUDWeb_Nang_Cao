@@ -1,0 +1,25 @@
+I. Phân tích dự án
+* Frontend:
+    - Trang chủ
+    - Trang giới thiệu
+    - Trang liên hệ
+    - Trang danh sách bài viết
+    - Trang chi tiết bài viết
+    - Trang thanh toán
+* Admin:
+    - Tài khoản người dùng:
+		+ Quản lý role (admin, user)
+		+ Quản lý người dùng: admin, user
+			Hiển thị danh sách, thêm, xoá, sửa
+		+ Đăng ký tài khoản
+		+ Đăng nhập
+	- Quản lý danh mục bài viết
+	- Quản lý loại bài viết
+	- Quản lý bài viết
+	- Quản lý đặt tour
+		+ Hiển thị danh sách đặt tour -> hiển thị giảm dần theo thời gian
+			(Quản lý trạng thái đặt tour)
+	- Quản lý dịch vụ: thuê xe
+		+ Hiển thị danh sách thuê xe -> hiển thị giảm dần theo thời gian
+			(Quản lý trạng thái dịch vụ)
+	- Quản lý phản hồi
