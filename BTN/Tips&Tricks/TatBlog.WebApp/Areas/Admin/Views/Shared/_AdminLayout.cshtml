@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewData["PageTitle"] - Dashboard</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="~/assets/images/favicon.png">
+    <title>Freedash Template - The Ultimate Multipurpose admin template</title>
+    <!-- Custom CSS -->
+    <link href="~/assets/extra-libs/c3/c3.min.css" rel="stylesheet">
+    <link href="~/assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
+    <link href="~/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link href="~/dist/css/style.min.css" rel="stylesheet">
+    <link href="~/css/style.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="~/assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="~/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- apps -->
+    <!-- apps -->
+    <script src="~/dist/js/app-style-switcher.js"></script>
+    <script src="~/dist/js/feather.min.js"></script>
+    <script src="~/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="~/dist/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="~/dist/js/custom.min.js"></script>
+    <!--This page JavaScript -->
+    <script src="~/assets/extra-libs/c3/d3.min.js"></script>
+    <script src="~/assets/extra-libs/c3/c3.min.js"></script>
+    <script src="~/assets/libs/chartist/dist/chartist.min.js"></script>
+    <script src="~/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+    <script src="~/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js"></script>
+    <script src="~/assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="~/dist/js/pages/dashboards/dashboard1.min.js"></script>
+
+    @await RenderSectionAsync("styles", required: false)
+</head>
+
+<body>
+    <!-- Thanh tiêu đề menu -->
+    <partial name="_NavBar"></partial>
+    <!--#region Left Sidebar - style you can find in sidebar.scss  -->
+    <div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+         data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full">
+
+        <aside class="left-sidebar" data-sidebarbg="skin6" style="position : fixed;">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar" data-sidebarbg="skin6">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav" st>
+                    <ul id="sidebarnav">
+                        <li class="sidebar-item">
+                            <a class="sidebar-link sidebar-link" aria-expanded="false"
+                               asp-area="Admin"
+                               asp-controller="Dashboard"
+                               asp-action="Index">
+                                <i data-feather="home" class="feather-icon"></i><span class="hide-menu">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="list-divider"></li>
+                        <li class="nav-small-cap"><span class="hide-menu">Applications</span></li>
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link has-arrow" href="javascript:void(0)"
+                               aria-expanded="false">
+
+                                <i data-feather="file-text" class="feather-icon"></i><span class="hide-menu">Bài viết</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                                <li class="sidebar-item">
+                                    <a asp-area="Admin"
+                                       asp-controller="GeneralPosts"
+                                       asp-action="Index"
+                                        class="sidebar-link">
+                                        <span class="hide-menu">Bài viết chung</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a asp-area="Admin"
+                                       asp-controller="HotelPosts"
+                                       asp-action="Index" class="sidebar-link">
+                                        <span class="hide-menu">Bài viết khách sạn</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a asp-area="Admin"
+                                       asp-controller="News"
+                                       asp-action="Index" class="sidebar-link">
+                                        <span class="hide-menu">Bài viết tin tức</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link sidebar-link" href="/admin/Categories"
+                               aria-expanded="false">
+                                <i data-feather="message-square" class="feather-icon"></i><span class="hide-menu">Chủ đề</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link sidebar-link" href="/admin/Users"
+                               aria-expanded="false">
+                                <i data-feather="calendar" class="feather-icon"></i><span class="hide-menu">Phân quyền</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link sidebar-link" href="/admin/Service"
+                               aria-expanded="false">
+                                <i data-feather="calendar" class="feather-icon"></i><span class="hide-menu">Dịch vụ</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link sidebar-link" href="admin/Feedback"
+                               aria-expanded="false">
+                                <i data-feather="calendar" class="feather-icon"></i><span class="hide-menu">Feedback</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link sidebar-link" href="Login"
+                               aria-expanded="false">
+                                <i data-feather="lock" class="feather-icon"></i><span class="hide-menu">Login</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link sidebar-link" href="Register" aria-expanded="false">
+                                <i data-feather="lock"
+                                   class="feather-icon"></i><span class="hide-menu">Register</span>
+                            </a>
+                        </li>
+
+                        <li class="list-divider"></li>
+                        <li class="nav-small-cap"><span class="hide-menu">Extra</span></li>
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link sidebar-link" 
+                            href="Login"
+                               aria-expanded="false">
+                                <i data-feather="log-out" class="feather-icon"></i><span class="hide-menu">Logout</span>
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </nav>
+            </div>
+            <!-- End Sidebar scroll-->
+
+        </aside>
+        <!-- Phần nội dung chính-->
+        @RenderBody()
+        <!-- #endregion -->
+    </div>
+    <footer class="border-top footer text-muted">
+        <div class="container-fluid text-center">
+            &copy; 2023 - Dashboard
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/main.js" asp-append-version="true"></script>
+
+    <!-- All Required js -->
+    <script src="~/assets/libs/jquery/dist/jquery.min.js "></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="~/assets/libs/popper.js/dist/umd/popper.min.js "></script>
+    <script src="~/assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
+    <script>
+        $(".preloader ").fadeOut();
+    </script>
+
+    @await RenderSectionAsync("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,30 @@
+﻿<div class="my-4">
+    <!-- Form tìm kiếm -->
+    <partial name="_SearchForm" />
+
+    <!-- Các chuyên đề/ chủ đề -->
+   @await Component.InvokeAsync("CategoriesWidget")
+
+    <!-- TOP 4 tác giả có nhiều bài viết nhất -->
+    @await Component.InvokeAsync("BestAuthors")
+
+    <!-- TOP 3 bài viết được xem nhiều nhất -->
+    @await Component.InvokeAsync("FeaturedPosts")
+
+    <!-- TOP 5 bài viết ngẫu nhiên -->
+    @await Component.InvokeAsync("RandomPosts")
+
+    <!-- Danh sách 12 tháng gần nhất và số lượng bài viết trong
+    mỗi tháng dưới dạng các liên kết -->
+    @await Component.InvokeAsync("Archives")
+
+    <!-- Tag cloud (Danh sách các thẻ (tag)) -->
+    @await Component.InvokeAsync("TagCloud")
+
+    <!-- Đăng ký nhận tin mới -->
+    <a asp-controller="Newsletter"
+       asp-action="Subscribe"
+       class="btn btn-primary d-block py-2">
+        Đăng ký nhận tin mới
+    </a>
+</div>
